@@ -13,8 +13,31 @@
 # and
 #   about_triangle_project_2.rb
 #
+
+def positiveValue(val)
+  val > 0
+end
+
+def wrongTriangle(a, b, c)
+  if (!positiveValue(a) || !positiveValue(b) || !positiveValue(c))
+    true
+  elsif ((a >= b + c) || (b >= a + c) || (c >= a + b))
+    true
+  else
+    false
+  end
+end
+
 def triangle(a, b, c)
-  # WRITE THIS CODE
+  if (wrongTriangle(a, b, c))
+    raise TriangleError
+  elsif (a == b && b == c)
+    :equilateral
+  elsif (a == b || a == c || b == c)
+    :isosceles
+  elsif (a != b && b != c && a != c)
+    :scalene
+  end
 end
 
 # Error class used in part 2.  No need to change this code.
